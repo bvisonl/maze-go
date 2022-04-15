@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Canvas tutorial</title>
+    <script>
+        function draw() {
+            var canvas = document.getElementById('tutorial');
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+
+                // Draw vertex
+                ctx.beginPath();
+                ctx.moveTo(0, 2);
+                ctx.arc(2, 2, 2, 0, Math.PI * 2, true); // Outer circle
+                ctx.fill()
+
+                // Draw edge
+                ctx.beginPath();
+                ctx.moveTo(0, 2);
+                ctx.lineTo(42, 2);
+                ctx.stroke();
+
+
+                // Draw vertex
+                ctx.beginPath();
+                ctx.arc(42, 2, 2, 0, Math.PI * 2, true); // Outer circle
+                ctx.fill()
+
+                // Draw edge
+                ctx.beginPath();
+                ctx.moveTo(42, 2);
+                ctx.lineTo(42, 42);
+                ctx.stroke();
+
+
+                // Draw vertex
+                ctx.beginPath();
+                ctx.arc(42, 2, 2, 0, Math.PI * 2, true); // Outer circle
+                ctx.fill()
+
+
+            }
+        }
+    </script>
+    <style>
+        canvas {
+        }
+    </style>
+</head>
+
+<body onload="draw();">
+    <canvas id="tutorial" ></canvas>
+</body>
+
+</html>

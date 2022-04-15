@@ -1,0 +1,45 @@
+package main
+
+import "fmt"
+
+type A struct {
+	Val string
+	C   C
+}
+
+type C struct {
+	Val string
+}
+
+type B struct {
+	Val string
+	As  []*A
+}
+
+func main() {
+
+	dd := make([][]*A, 2)
+	for i := range dd {
+		dd[i] = make([]*A, 2)
+	}
+
+	a := A{Val: "a"}
+	a.C = C{Val: "c"}
+	b := B{Val: "b", As: []*A{&a}}
+
+	t := make([]*A, 0)
+	t = append(t, &a)
+
+	dd[0] = append(dd[0], &a)
+
+	a.C.Val = "cc"
+	changeMe(&a)
+
+	fmt.Println("A:", a, "B:", b.As[0], "T: ", t[0])
+	fmt.Println("DD:", dd[0][0])
+
+}
+
+func changeMe(a *A) {
+	a.Val = "aa"
+}
